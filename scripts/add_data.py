@@ -186,11 +186,11 @@ def db_execute_fetch(*args, many=False, tablename='', rdf=True, **kwargs) -> pd.
 
 
 if __name__ == "__main__":
-    createDB(dbName='tweets')
-    emojiDB(dbName='tweets')
-    createTables(dbName='tweets')
+    createDB(dbName='city_traffic')
+    # emojiDB(dbName='city_traffic')
+    # createTables(dbName='city_traffic')
 
-    df = pd.read_csv('processed_tweet_data.csv')
+    # df = pd.read_csv('../data/20181029_d1_0800_0830.csv)
 
-    insert_to_tweet_table(dbName='tweets', df=df, table_name='TweetInformation')
+    # insert_to_tweet_table(dbName='city_traffic', df=df, table_name='TweetInformation')
 

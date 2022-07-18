@@ -25,5 +25,5 @@ CREATE TABLE IF NOT EXISTS  `objects` (
 );
 COPY objects(`track_id`, `type`,`traveled_d`, `avg_speed`, `lat`, `lon`, `speed`, `lon_acc`, `lat_acc`, `time`)
 FROM ‘../../data/20181029_d1_0800_0830.csv’
-DELIMITER ‘,’
+DELIMITER ‘;’
 CSV HEADER;

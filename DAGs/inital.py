@@ -26,4 +26,4 @@ extract_data = PostgresOperator(
 extract_data
 
 if __name__ == "__main__":
-        dag.cli()
+    dag.cli()

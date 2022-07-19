@@ -1,6 +1,6 @@
 import airflow.utils.dates
 from airflow.models import DAG
-from airflow.operators.postgres_operator import PostgresOperator
+from airflow.providers.postgres.operators.postgres import PostgresOperator
 
 args = {'owner': 'airflow'}
 
@@ -12,10 +12,18 @@ dag = DAG(
    catchup=False,
 )
 
+create_table = PostgresOperator(
+    task_id="create_table",
+    postgres_conn_id="postgres_default",
+    sql="sql/create_table.sql",
+    dag=dag
+)
+
+
 extract_data = PostgresOperator(
     dag=dag,
     task_id="extract_data",
-    sql="../scripts/sql/unload.sql",
+    sql="sql/unload.sql",
     # postgres_conn_id = "postgres_local",
     postgres_conn_id="postgres_default",
     params={"traffic": "../data/20181029_d1_0800_0830.csv"},
@@ -23,7 +31,7 @@ extract_data = PostgresOperator(
     wait_for_downstream=True,
 )
 
-extract_data
+create_table >> extract_data
 
 if __name__ == "__main__":
     dag.cli()

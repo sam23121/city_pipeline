@@ -27,8 +27,8 @@ extract_data = PostgresOperator(
     # postgres_conn_id = "postgres_local",
     postgres_conn_id="postgres_default",
     params={"traffic": "../data/20181029_d1_0800_0830.csv"},
-    depends_on_past=True,
-    wait_for_downstream=True,
+    # depends_on_past=True,
+    # wait_for_downstream=True,
 )
 
 create_table >> extract_data

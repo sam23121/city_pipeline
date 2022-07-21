@@ -1,0 +1,23 @@
+version: 2
+
+
+models:
+  - name: objects_transformation
+    description: 'Transformation for my postgres model'
+    schema: public
+    quoting:
+      database: false
+      schema: false
+      identifier: false
+    loader: stitch
+    tables:
+      - name: objects
+
+# models:
+#   - name: objects_transformation
+#     description: 'Transformation for my postgres model'
+#     database: postgres
+#     schema: postgres
+#     tables:
+#       - name: objects
+#         description: 'each objects detail'

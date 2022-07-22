@@ -14,25 +14,25 @@ models:
       - name: objects
         columns:
           - name: type1
-            description: the unique vechicles that were on the road
+            description: 'the unique vechicles that were on the road'
             tests:
               - unique
               - not_null
 
           - name: avg_speed
-            description: the total average vechicles speed
+            description: 'the total average vechicles speed'
             tests:
               - unique
               - not_null
 
           - name: traveled_d
-            description: the total distance traveled by each vechicles
+            description: 'the total distance traveled by each vechicles'
             tests:
               - unique
               - not_null
 
           - name: type1
-            description: the total counts of each vechicle types 
+            description: 'the total counts of each vechicle types' 
             tests:
               - unique
               - not_null

@@ -1,2 +1,3 @@
-data
-*.csv
+
+data/20181029_d1_0800_0830.csv
+data/objects.csv

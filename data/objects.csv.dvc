@@ -1,0 +1,4 @@
+outs:
+- md5: 18641dc04708a481624193ef66a13a98
+  size: 57815
+  path: objects.csv

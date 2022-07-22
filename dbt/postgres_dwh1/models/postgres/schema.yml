@@ -16,25 +16,24 @@ models:
           - name: type1
             description: 'the unique vechicles that were on the road'
             tests:
-              - unique
-              - not_null
+            - dbt_expectations.expect_column_to_exist
+
 
           - name: avg_speed
             description: 'the total average vechicles speed'
             tests:
-              - unique
-              - not_null
+            - dbt_expectations.expect_column_to_exist
+
 
           - name: traveled_d
             description: 'the total distance traveled by each vechicles'
             tests:
-              - unique
-              - not_null
+            - dbt_expectations.expect_column_to_exist
+
 
           - name: type1
             description: 'the total counts of each vechicle types' 
             tests:
-              - unique
-              - not_null
+            - dbt_expectations.expect_column_to_exist
           
 

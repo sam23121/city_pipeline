@@ -1,0 +1,73 @@
+version: '3'
+services:
+  postgres-airflow:
+    image: postgres
+    environment:
+      POSTGRES_PASSWORD: pssd
+      POSTGRES_USER : airflowuser
+      POSTGRES_DB : airflowdb
+      
+      AIRFLOW_SCHEMA: airflow
+    expose:
+      - 5432
+    restart: always
+    volumes:
+      - ./scripts_postgres:/docker-entrypoint-initdb.d
+      # - ./sample_data:/sample_data
+
+  postgres-dbt:
+    image: postgres
+    environment:
+      POSTGRES_PASSWORD: pssd
+      POSTGRES_USER : dbtuser
+      POSTGRES_DB : dbtdb
+      DBT_SCHEMA: dbt
+      DBT_RAW_DATA_SCHEMA: dbt_raw_data
+    expose:
+      - 5432
+    restart: always
+    volumes:
+      - ./sample_data:/sample_data
+
+  airflow:
+    build: .
+    restart: always
+    environment: 
+      DBT_PROFILES_DIR: /dbt
+      AIRFLOW_HOME: /airflow
+      AIRFLOW__CORE__DAGS_FOLDER: /airflow/dags
+      AIRFLOW__CORE__PARALLELISM: 4
+      AIRFLOW__CORE__DAG_CONCURRENCY: 4
+      AIRFLOW__CORE__MAX_ACTIVE_RUNS_PER_DAG: 4
+      # AIRFLOW__ADMIN__HIDE_SENSITIVE_VARIABLE_FIELDS: False
+      # Postgres details need to match with the values defined in the postgres-airflow service
+      POSTGRES_USER: airflowuser
+      POSTGRES_PASSWORD: pssd
+      POSTGRES_HOST: postgres-airflow
+      POSTGRES_PORT: 5432
+      POSTGRES_DB: airflowdb
+      # postgres-dbt connection details. Required for the inital loading of seed data
+      # Credentials need to match with service postgres-dbt
+      DBT_POSTGRES_PASSWORD: pssd
+      DBT_POSTGRES_USER : dbtuser
+      DBT_POSTGRES_DB : dbtdb
+      DBT_DBT_SCHEMA: dbt
+      DBT_DBT_RAW_DATA_SCHEMA: dbt_raw_data
+      DBT_POSTGRES_HOST: postgres-dbt
+    depends_on:
+      - postgres-airflow
+      - postgres-dbt
+    ports:
+      - 8000:8080
+    volumes:
+      - ./dbt:/dbt
+      - ./airflow:/airflow
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080
+    depends_on:
+      - postgres-airflow
+      - postgres-dbt

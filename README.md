@@ -10,14 +10,13 @@ A city traffic department wants to collect traffic data using swarm UAVs (drones
 * [Setup](#setup)
 * [Features](#features)
 * [Status](#status)
-* [Inspiration](#inspiration)
 * [Contact](#contact)
 
 ## General info
 The data warehouse should take into account future needs, organise data such that a number of downstream projects query the data efficiently. You should use the Extract Load Transform (ELT) framework using DBT.  Unlike the Extract, Transform, Load (ETL), the ELT framework helps analytic engineers in the city traffic department setup transformation workflows on a need basis
 
 ## Screenshots
-![Example screenshot](./img/screenshot.png)
+![Example screenshot](./img/dbt.png)
 
 ## Technologies
 * Airflow
@@ -25,24 +24,22 @@ The data warehouse should take into account future needs, organise data such tha
 * DBT
 
 ## Setup
-Describe how to install / setup your local environement / add link to demo version.
+To copy and follow the same procedures go check out my [blog]()
 
-## Code Examples
-Show examples of usage:
-`put-your-code-here`
 
 ## Features
-List of features ready and TODOs for future development
-* Awesome feature 1
-* Awesome feature 2
-* Awesome feature 3
+
+- sends email when dags fail
+- dbt docs is deployed at https://musical-entremet-44e5bc.netlify.app/
+
 
 To-do list:
-* Wow improvement to be done 1
-* Wow improvement to be done 2
+- add more dags and transformations
+- add more dbt packages data control montoring
+- add tests
 
 ## Status
-Project is: _in progress_, _finished_,
+_finished_
 
 
 

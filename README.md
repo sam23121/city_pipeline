@@ -24,7 +24,7 @@ The data warehouse should take into account future needs, organise data such tha
 * DBT
 
 ## Setup
-To copy and follow the same procedures go check out my [blog]()
+To copy and follow the same procedures go check out my [blog](https://medium.com/@smlalene/data-warehouse-tech-stack-with-postgresql-dbt-airflow-35dfb7e743f8)
 
 
 ## Features

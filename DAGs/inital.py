@@ -4,7 +4,11 @@ from airflow.providers.postgres.operators.postgres import PostgresOperator
     
 
 
-args = {'owner': 'airflow'}
+args = {
+    'owner': 'airflow',
+    'email_on_failure': True,
+	'email': ['smlalene@gmail.com']
+}
 
 dag = DAG(
    dag_id="extract",
